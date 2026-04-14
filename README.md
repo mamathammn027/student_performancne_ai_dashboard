@@ -22,7 +22,7 @@ git clone
 https://github.com/mamathammn027/student_performancne_ai_dashboard.git
 
 ### 2. Move into project folder
-cd student_performancne_ai_dashboard##
+cd student_performancne_ai_dashboard
 
 
 ### 3. Install required libraries
@@ -36,8 +36,8 @@ Open your browser to the local link shown in your terminal. Network URL: http://
 - Displays student performance prediction
 - Shows model accuracy score
 - Provides analysis based on input data
-
- 🧠 Project Highlights
+- 
+## 🧠 Project Highlights
 - End-to-end machine learning workflow
 - Data preprocessing and cleaning
 - Model training and evaluation
