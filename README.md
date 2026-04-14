@@ -22,7 +22,7 @@ git clone
 https://github.com/mamathammn027/student_performancne_ai_dashboard.git
 
 ### 2. Move into project folder
-cd student_performancne_ai_dashboard## 🧠 Project Highlights
+cd student_performancne_ai_dashboard##
 
 
 ### 3. Install required libraries
@@ -36,6 +36,7 @@ python main.py
 - Shows model accuracy score
 - Provides analysis based on input data
 
+ 🧠 Project Highlights
 - - End-to-end machine learning workflow
 - Data preprocessing and cleaning
 - Model training and evaluation
