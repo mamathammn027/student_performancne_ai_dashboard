@@ -38,7 +38,7 @@ Open your browser to the local link shown in your terminal. Network URL: http://
 - Provides analysis based on input data
 
  🧠 Project Highlights
-- - End-to-end machine learning workflow
+- End-to-end machine learning workflow
 - Data preprocessing and cleaning
 - Model training and evaluation
 - Simple and easy-to-use structure
