@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body {margin:0;font-family:Segoe UI;background:#0f172a;color:white;}
+.header {display:flex;justify-content:space-between;padding:15px;background:#020617;}
+.container {display:flex;gap:20px;padding:30px;}
+.card {flex:1;background:#1e293b;padding:20px;border-radius:15px;}
+
+input,select {width:100%;padding:10px;margin:8px 0;}
+button {width:100%;padding:10px;background:#3b82f6;color:white;border:none;margin-top:5px;}
+
+.result {padding:15px;border-radius:10px;}
+.pass{background:green;} .fail{background:red;}
+
+.logout{background:red;padding:8px;text-decoration:none;color:white;}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h2>🎓 AI Dashboard</h2>
+<div>Accuracy: {{ accuracy }}% <a href="/logout" class="logout">Logout</a></div>
+</div>
+
+<div class="container">
+
+<div class="card">
+<h3>📥 Inputs</h3>
+
+<form action="/predict" method="post">
+<input name="math" placeholder="Math Score">
+<input name="reading" placeholder="Reading Score">
+<input name="study" placeholder="Study Hours">
+<input name="attendance" placeholder="Attendance %">
+<input name="sleep" placeholder="Sleep Hours">
+
+<select name="prep">
+<option value="yes">Test Prep Done</option>
+<option value="no">No Test Prep</option>
+</select>
+
+<button>Predict</button>
+</form>
+
+<form action="/graph"><button>📊 Graph</button></form>
+<form action="/analysis"><button>📈 Analysis</button></form>
+
+</div>
+
+<div class="card">
+
+{% if result %}
+<div class="result {{ 'pass' if 'PASS' in result else 'fail' }}">
+{{ result }}
+</div>
+
+<p>{{ recommendation }}</p>
+
+<canvas id="chart"></canvas>
+<script>
+new Chart(document.getElementById("chart"), {
+type:'bar',
+data:{labels:['Math','Reading','Prediction'],
+datasets:[{data:[{{ math }},{{ reading }},{{ prediction }}]}]}
+});
+</script>
+
+<h3>🔍 LIME</h3>
+<ul>
+{% for i in lime_exp %}
+<li>{{ i[0] }} → {{ i[1] }}</li>
+{% endfor %}
+</ul>
+
+{% endif %}
+
+{% if overall_graph %}
+<img src="data:image/png;base64,{{ overall_graph }}">
+{% endif %}
+
+{% if graphs %}
+{% for g in graphs %}
+<img src="data:image/png;base64,{{ g }}">
+{% endfor %}
+{% endif %}
+
+</div>
+
+</div>
+
+</body>
+</html>
